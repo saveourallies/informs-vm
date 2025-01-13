@@ -6,7 +6,7 @@ To deploy to Azure using Automation, some prep work is require setup a Service A
 
 GitHub Actions drive Terraform through Azure Resource Manager.
 
-![GitHub Actions drive Terraform Automation through Azure Resource Manager]
+![GitHub Actions drive Terraform Automation through Azure Resource Manager](diagrams/structurizr-1-GitHub.png)
 
 ### Create the Terraform Service Account on Azure
 
@@ -28,3 +28,12 @@ This command will output an application ID and password to use for this service 
 This diagram shows the Role of "contributor" assigned to a user "svc-tfuser" and scoped to a subscription.
 
 ![Azure AD Service Principal](diagrams/structurizr-1-AzureAD.png)
+
+### Add "Subscription Contributor" to Existing Service Account
+
+```bash
+az role assignment create \
+    --assignee bd397ec6-5adf-46d0-8c51-d99a4a4e9c7b \
+    --role Contributor \
+    --scope /subscriptions/7472ba85-8aeb-4c92-8a19-943744670586
+```
